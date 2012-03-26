@@ -1,2 +1,8 @@
+bin
+include/
+issl/conf
+issl/conf.py
+issl/httpd.conf
+lib/
 *.pyc
 *.sql.gz

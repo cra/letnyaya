@@ -28,7 +28,7 @@ urlpatterns = patterns('',
 
 
     url(r'^apply/$',
-        'applications.views.apply',
+        'applications.views.apply_view',
         name='apply'),
 
     url(r'^test-mail/$',
