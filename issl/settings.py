@@ -63,8 +63,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin_media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    ("badges", os.path.join(PROJECT_DIR, 'static', 'badges')),
-    os.path.join(PROJECT_DIR, 'static', 'img'),
+    ("badges", os.path.join(conf.ROOT, 'static', 'badges')),
+    os.path.join(conf.ROOT, 'static', 'css'),
+    os.path.join(conf.ROOT, 'static', 'img'),
     os.path.join(PROJECT_DIR, 'static', 'css'),
     os.path.join(PROJECT_DIR, 'static', 'js'),
     os.path.join(PROJECT_DIR, 'static', 'doc'),
@@ -84,10 +85,8 @@ SECRET_KEY = conf.SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -97,7 +96,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
+INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'issl.urls'
 
@@ -116,6 +117,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'south',
+    'debug_toolbar',
     # site-specific apps
     'workshops',
     'applications',

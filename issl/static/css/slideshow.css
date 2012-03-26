@@ -1,0 +1,117 @@
+    section.slideshow {
+        margin: 0 auto;
+        width: 960px;
+        height: 300px;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+    section.slideshow div.feed figure {
+        margin: 0;
+        padding: 0;
+        width: 960px;
+        height: 300px;
+        display: block;
+        float: left;
+    }
+    section.slideshow figure img {
+        width: 960px;
+        height: 300px;
+    }
+    section.slideshow figure figcaption {
+        display: block;
+        position: relative;
+        float: left;
+        color: #FF0000;
+        background: white;
+        opacity: 0.5;
+        padding-left: 60px;
+        padding-right: 30px;
+        margin-top:-80px;
+        margin-left: 0;
+        margin-right: 420px;
+        height: 75px;
+        width: 450px;
+        font: 30px 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    @-o-keyframes timer {
+        0% {left:0px;}
+        24% {left:0px;}
+        25% {left:-960px;}
+        49% {left:-960px;}
+        50% {left:-1920px;}
+        74% {left:-1920px;}
+        75% {left:-2880px;}
+        99% {left:-2880px;}
+        100% {left:-3840px;}
+    }
+    @-ms-keyframes timer {
+        0% {left:0px;}
+        24% {left:0px;}
+        25% {left:-960px;}
+        49% {left:-960px;}
+        50% {left:-1920px;}
+        74% {left:-1920px;}
+        75% {left:-2880px;}
+        99% {left:-2880px;}
+        100% {left:-3840px;}
+    }
+    @-moz-keyframes timer {
+        0% {left:0px;}
+        24% {left:0px;}
+        25% {left:-960px;}
+        49% {left:-960px;}
+        50% {left:-1920px;}
+        74% {left:-1920px;}
+        75% {left:-2880px;}
+        99% {left:-2880px;}
+        100% {left:-3840px;}
+    }
+    @-webkit-keyframes timer {
+         0% {left:0px;}
+        24% {left:0px;}
+        25% {left:-960px;}
+        49% {left:-960px;}
+        50% {left:-1920px;}
+        74% {left:-1920px;}
+        75% {left:-2880px;}
+        99% {left:-2880px;}
+        100% {left:-3840px;}
+    }
+    @keyframes timer {
+         0% {left:0px;}
+        24% {left:0px;}
+        25% {left:-960px;}
+        49% {left:-960px;}
+        50% {left:-1920px;}
+        74% {left:-1920px;}
+        75% {left:-2880px;}
+        99% {left:-2880px;}
+        100% {left:-3840px;}
+    }
+
+    section.slideshow div.feed {
+        position: relative;
+        width: 4800px;
+        height: 300px;
+        -o-animation-name: timer;
+        -o-animation-delay: 0;
+        -o-animation-iteration-count: infinite;
+        -o-animation-timing-function: linear;
+        -o-animation-duration: 60s;
+        -moz-animation-name: timer;
+        -moz-animation-delay: 0;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+        -moz-animation-duration: 60s;
+        -webkit-animation-name: timer;
+        -webkit-animation-delay: 0;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-duration: 60s;
+        -ms-animation-name: timer;
+        -ms-animation-delay: 0;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;
+        -ms-animation-duration: 60s;
+    }

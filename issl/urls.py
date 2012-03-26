@@ -16,15 +16,9 @@ applicant_qs = Applicant.objects.all()
 urlpatterns = patterns('',
     #url(r'^issl/', include('issl.foo.urls')),
 
-    # Temporally disable the mainpage
-    #url(r'^$',
-        #'django.views.generic.list_detail.object_list', 
-        #{'queryset':w_qs, 'template_name':'home.html'},
-        #name='home'),
-
-    # Swap main page with application page
     url(r'^$',
-        'applications.views.apply',
+        'django.views.generic.list_detail.object_list', 
+        {'queryset':w_qs, 'template_name':'home.html'},
         name='home'),
 
 

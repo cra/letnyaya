@@ -6,6 +6,7 @@ from datetime import datetime
 from django import forms
 from django.shortcuts import redirect, get_object_or_404
 from django.core.mail import send_mail, EmailMessage
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
@@ -26,6 +27,16 @@ class PersonalForm(forms.Form):
     age = forms.IntegerField(label=u"Возраст", min_value=4, max_value=150)
     photo = forms.ImageField(label=u"Фотка", 
             help_text=u"Желательно, чтобы файл был не больше 500Кб и было видно лицо")
+
+    def clean_photo(self):
+        photo = self.cleaned_data.get('photo', False)
+        if photo:
+            if photo._size > 1024*1024:
+                raise ValidationError(u"Картинка слишком большая (> 1mb).")
+            return photo
+        else:
+            raise ValidationError(u"Не смог прочитать загруженную картинку")
+
 
 
 class ApplicantForm(forms.Form):

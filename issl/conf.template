@@ -7,4 +7,4 @@
 's|__MAILPORT__|587|g'
 's|__MAILUSER__|applications+letnyayashkola.org|g'
 's|__MAILPASS__|monkey_business|g'
-'s|__SECRET_KEY__|olololo|g'
+'s|__SECRET_KEY__|random string of 50 symbols|g'

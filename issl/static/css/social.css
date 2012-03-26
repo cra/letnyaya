@@ -1,0 +1,60 @@
+    section.social {
+        position: absolute;
+        width: 300px;
+        margin-left: 660px;
+    }
+    section.social h3 {
+        color: #C00000;
+        font: 20px 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    section.social div.twitter div.tweet {
+        padding-bottom: 20px;
+        min-height: 50px;
+    }
+
+    section.social div.twitter div.tweet img {
+        width: 48px;
+        height: 48px;
+        float: left;
+        padding-right: 5px;
+    }
+
+    section.social div.twitter div.tweet a.name {
+        color: #2A2A2A;
+        font: 15px 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    section.social div.twitter div.tweet a.screen {
+        margin-left: 10px;
+        color: #C00000;
+        font: 15px 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+    }
+    section.social div.twitter div.tweet time { 
+        display: block;
+        padding-left: 5px;
+        margin-left: 50px;
+        color: #707070;
+        font: 10px 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+    }
+    section.social div.twitter div.tweet span {
+        display: block;
+    }
+    section.social div.twitter div.tweet span a.twitter-anywhere-user {
+        color: #C00000;
+    }
+    section.social div.twitter div.tweet span a.hash {
+        color: #C00000;
+    }
+    section.social div.twitter div.tweet span a.link {
+        color: #C00000;
+    }
+
+    section.social a.more {
+        font-weight: bold;
+        color: #C00000;
+        cursor: pointer;
+    }
+

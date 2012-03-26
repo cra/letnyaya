@@ -1,0 +1,15 @@
+    footer {
+        padding: 20px;
+        font: 13px 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+        color: #707070;
+        margin: 0 auto;
+        width: 960px;
+        margin-top: 200px;
+        border-top: 1px solid #DBDBDB;
+        margin-bottom: 150px;
+    }
+    footer div.labels {
+        margin: 0 auto;
+        text-align: center;
+    }
+

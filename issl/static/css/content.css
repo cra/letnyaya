@@ -1,0 +1,15 @@
+    section.content {
+        width: 600px;
+    }
+
+    section.content h3 {
+        margin-top: 60px;
+        color: #C00000;
+        font: 20px 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+    section.content p {
+        color: #2A2A2A;
+        font: 12px 'Segoe UI Light', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+    }
+
