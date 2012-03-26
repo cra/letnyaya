@@ -20,12 +20,22 @@ class PersonalForm(forms.Form):
     surname = forms.CharField(label=u"Фамилия", max_length=100)
     second_name = forms.CharField(label=u"Отчество", max_length=100, required=False)
     city = forms.CharField(label=u"Город, где вы постоянно живёте", 
-            help_text=u"Если город малоизвестный, укажите ещё и область")
+        help_text=u"Если город малоизвестный, укажите ещё и область")
     email = forms.EmailField(label=u"Электронная почта") 
     telephone = forms.CharField(label=u"Ваш мобильный телефон")
     age = forms.IntegerField(label=u"Возраст", min_value=4, max_value=150)
     photo = forms.ImageField(label=u"Фотка", 
-            help_text=u"Желательно, чтобы файл был не больше 500Кб и было видно лицо")
+        help_text=u"Желательно, чтобы файл был не больше 500Кб и было видно лицо")
+
+    def clean_photo(self):
+        photo = self.cleaned_data.get('photo', False)
+        if photo:
+            if photo._size > 1024*1024:
+                raise ValidationError(u"Картинка слишком большая (> 1mb).")
+            else:
+                return photo
+        else:
+            raise ValidationError(u"Не смог прочитать загруженную картинку")
 
 
 class ApplicantForm(forms.Form):
@@ -49,85 +59,85 @@ ONBOARD_CHOICES = [
 
 class AdditionalInfoForm(forms.Form):
     workplace = forms.CharField(
-            label=u"Место работы", 
-            widget=forms.Textarea, 
-            help_text=u"Где вы учитесь, работаете, проявляете общественную активность. "
-                      u"Рекомендуется отвечать подробно (но не более 500 знаков)", 
-            max_length=500)
+        label=u"Место работы", 
+        widget=forms.Textarea, 
+        help_text=u"Где вы учитесь, работаете, проявляете общественную активность. "
+                  u"Рекомендуется отвечать подробно (но не более 500 знаков)", 
+        max_length=500)
     job = forms.CharField(
-            label=u"Специальность", 
-            widget=forms.Textarea, 
-            help_text=u"Как бы вы определили вашу главную специальность "
-                      u"(медик, журналист, физик и т.п.)",
-            max_length=300)
+        label=u"Специальность", 
+        widget=forms.Textarea, 
+        help_text=u"Как бы вы определили вашу главную специальность "
+                  u"(медик, журналист, физик и т.п.)",
+        max_length=300)
     onboard = forms.MultipleChoiceField(
-            label=u"Что бы вы хотели делать на Летней Школе?", 
-            choices=ONBOARD_CHOICES,
-            help_text=u"Куратор школьников это что-то типа вожатого. Оргвопросы - в основном, составление расписаний и т.п. Хозяйственные вопросы - кухня, строительство и пр.",
-            required=True,
-            widget=forms.widgets.CheckboxSelectMultiple,)
+        label=u"Что бы вы хотели делать на Летней Школе?", 
+        choices=ONBOARD_CHOICES,
+        help_text=u"Куратор школьников это что-то типа вожатого. Оргвопросы - в основном, составление расписаний и т.п. Хозяйственные вопросы - кухня, строительство и пр.",
+        required=True,
+        widget=forms.widgets.CheckboxSelectMultiple,)
 
 
 class SchoolForm(forms.Form): 
     been_before = forms.MultipleChoiceField(
-            label=u"Ездили ли вы раньше на Летнюю Школу?", 
-            choices=[(t, u"%s" % t) for t in xrange(2004, datetime.today().year)],
-            required=False,
-            help_text=u"Если не ездили, просто не ставьте никаких галочек",
-            widget=forms.widgets.CheckboxSelectMultiple,)
+        label=u"Ездили ли вы раньше на Летнюю Школу?", 
+        choices=[(t, u"%s" % t) for t in xrange(2004, datetime.today().year)],
+        required=False,
+        help_text=u"Если не ездили, просто не ставьте никаких галочек",
+        widget=forms.widgets.CheckboxSelectMultiple,)
     how_long = forms.MultipleChoiceField(
-            label=u"На какой срок (предположительно вы сможете приехать Летнюю Школу?", 
-            choices=[
-                (0, u"Почти на весь срок (25-35 дней)"),
-                (1, u"На 2-3 учебных цикла"),
-                (2, u"На один учебный цикл (6-7 дней)"),
-                (3, u"Другое"),
-            ],
-            help_text=u'Если вы выбрали пункт "Другое", разверните свой ответ ниже',
-            required=True,
-            widget=forms.widgets.CheckboxSelectMultiple,)
+        label=u"На какой срок (предположительно вы сможете приехать Летнюю Школу?", 
+        choices=[
+            (0, u"Почти на весь срок (25-35 дней)"),
+            (1, u"На 2-3 учебных цикла"),
+            (2, u"На один учебный цикл (6-7 дней)"),
+            (3, u"Другое"),
+        ],
+        help_text=u'Если вы выбрали пункт "Другое", разверните свой ответ ниже',
+        required=True,
+        widget=forms.widgets.CheckboxSelectMultiple,)
     how_long_comment = forms.CharField(
-            label=u"Комментарий к срокам. Что угодно про время вашего пребывания, коротко.", 
-            required=False,
-            widget=forms.Textarea,
-            max_length=300)
+        label=u"Комментарий к срокам. Что угодно про время вашего пребывания, коротко.", 
+        required=False,
+        widget=forms.Textarea,
+        max_length=300)
     courses = forms.CharField(
-            label=u"Курсы и лекции", 
-            help_text=u"Какие курсы и разовые лекции вы готовы (хотя бы гипотетически) прочитать? На какие темы вы хотели бы организовать дискуссии, тренинги, мастер-классы?",
-            required=False,
-            widget=forms.Textarea,
-            max_length=500)
+        label=u"Курсы и лекции", 
+        help_text=u"Какие курсы и разовые лекции вы готовы (хотя бы гипотетически) прочитать? На какие темы вы хотели бы организовать дискуссии, тренинги, мастер-классы?",
+        required=False,
+        widget=forms.Textarea,
+        max_length=500)
     dosug = forms.CharField(
-            label=u"Какие досугово-развлекательные мероприятия вы хотели бы предложить?",
-            required=False,
-            widget=forms.Textarea,
-            max_length=500)
+        label=u"Какие досугово-развлекательные мероприятия вы хотели бы предложить?",
+        required=False,
+        widget=forms.Textarea,
+        max_length=500)
 
 
 class MoneyForm(forms.Form):
     money = forms.ChoiceField(
-            label=u"Какая сумма оплаты за день кажется вам адекватной?", 
-            choices=[(t, u"%s руб." % t) for t in xrange(100, 501, 50)] \
-                    + [(-1, u"более 500 руб.")],
-            required=True,)
+        label=u"Какая сумма оплаты за день кажется вам адекватной?", 
+        choices=[(t, u"%s руб." % t) for t in xrange(100, 501, 50)] \
+                + [(-1, u"более 500 руб.")],
+        required=True,)
 
 
 class QuestionsForm(forms.Form):
     questions = forms.CharField(
-            label=u"Какие вопросы вы хотели бы задать организаторам Летней Школы?",
-            required=False,
-            widget=forms.Textarea,
-            max_length=1000)
+        label=u"Какие вопросы вы хотели бы задать организаторам Летней Школы?",
+        required=False,
+        widget=forms.Textarea,
+        max_length=1000)
 
 def test_mail(request):
     ''' Просто проверка, что почта работает. Ничего личного
     '''
 
     send_mail(u'Test', 
-            u'Mensaje. Hi there. Also, тест русских букв. %s' % datetime.now(),
-            'from_me_darling@example.com', 
-            ['c6h10o5@gmail.com'], 
-            fail_silently=False)
+        u'Mensaje. Hi there. Also, тест русских букв. %s' % datetime.now(),
+        'from_me_darling@example.com', 
+        ['c6h10o5@gmail.com'], 
+        fail_silently=False)
 
     return redirect('home')
 
@@ -138,7 +148,7 @@ def new_hash():
 
 
 @render_to('apply.html')
-def apply(request):
+def apply_view(request):
     ''' Подать заявку на участие
     '''
     if request.method == 'POST':

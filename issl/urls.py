@@ -24,7 +24,7 @@ urlpatterns = patterns('',
 
     # Swap main page with application page
     url(r'^$',
-        'applications.views.apply',
+        'applications.views.apply_view',
         name='home'),
 
 
@@ -34,7 +34,7 @@ urlpatterns = patterns('',
 
 
     url(r'^apply/$',
-        'applications.views.apply',
+        'applications.views.apply_view',
         name='apply'),
 
     url(r'^test-mail/$',
