@@ -1,0 +1,53 @@
+# -*- encoding: utf-8 -*-
+DEBUG = False #True 
+COMPRESS = not DEBUG
+
+ROOT = '__ROOT__/issl'
+ROOT_URLCONF = 'issl.urls'
+SERVER_NAME = '__SERVER_NAME__'
+SERVER_ROOT_PATH = 'http://' + SERVER_NAME
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '{0}{1}'.format(ROOT,MEDIA_URL)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '__DBNAME__',                      # Or path to database file if using sqlite3.
+        'USER': '__USER__',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+
+ADMINS = (
+     ('admin', '__ADMIN_EMAIL__'),
+)
+
+EXTRA_MIDDLEWARE = ()
+
+# тот пароль, который вы вводите при создании базы данный скриптом init.sh
+ADMIN_PASSWORD = 'admin'
+
+SEND_MAIL = True # Шлём анкеты или нет
+EMAIL_HOST = '__MAILHOST__'
+EMAIL_PORT = __MAILPORT__
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = u'__MAILUSER__'
+EMAIL_HOST_PASSWORD = r'__MAILPASS__'
+EMAIL_SUBJECT_PREFIX = u'[Летняя Школа] '
+BCC_LIST = ['c6h10o5@gmail.com']
+MAIL_CODA = u"""
+Это письмо пришло автоматически. 
+
+Внимание!! Скорее всего, на него не надо отвечать (даже адрес ответа наверняка какой-нибудь фальшивый), но ты знаешь что делать, дорогой друг (подруга? А ладно, ТОВАРИЩ!! \о\о\о).
+
+Люблю
+Целую
+Почтовая обезьянка ЛШ-2012
+
+http://letnyayashkola.org
+"""
+
+SECRET_KEY = '__SECRET_KEY__'

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load socio %}
+
+{% block title %}Заявка. {{ application.workshop }}{% endblock title %}
+
+{% block extra_head %}
+<script src="{{ STATIC_URL }}jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+{% endblock extra_head %}
+
+{% block content %}
+
+<h1>Суть заявки</h1>
+<ol>
+    <li><strong>Имя желающего</strong>: {{ applicant.name }} </li>
+    <li><strong>Мастерская</strong>: {{ workshop }}</li>
+    <li>это {% if application.is_reserve %}резервный{% else %}основной{% endif %} выбор</li>
+    <li><strong>телефон</strong>: {{ applicant.telephone }}</li>
+    <li><strong>e-mail</strong>: {{ applicant.email }}</li>
+    <li><strong>возраст</strong>: {{ applicant.age }}</li>
+    <li><strong>фото</strong>: <br/><img src="{{ applicant.photo.url }}" width="300" alt="Фотка"/></li>
+</ol>
+<h2>Подробности заявки и возможные действия</h2>
+<p><a href="{% url applicant_view applicant.view_link %}">полная анкета</a></p>
+<p>Желающий {% if not application.is_interviewed %}не отсобеседован ещё. <a href="{% url application_examined application.edit_link %}">Пометить как отсобеседованного</a>
+{% else %}
+отсобеседован.</p>
+<p>{{ application.is_accepted|yesno:"принят,не принят,решение о приёме пока не принято."}}</p>
+<p><ul>
+    <li><a href="#">Пометить как принятого (пока не работает)</a></li>
+    <li><a href="#">Пометить как отказанного (пока не работает)</a></li>
+</ul></p>
+{#{% if application.is_accepted %} мастерская {% if not application.is_accepted %}не{% endif %} готова взять#}
+{% endif %}
+{% endblock content %}
+

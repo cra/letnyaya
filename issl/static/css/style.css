@@ -1,0 +1,263 @@
+body {
+    /*background: #464646;*/
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font: 12pt sans-serif;
+    color: #000000;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background: url(http://letnyayashkola.org/static/background.jpg);
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-repeat: repeat;
+}
+
+header,section,footer {
+    width: 800px;
+    margin: 5px auto;
+    padding: 0;
+    border: solid 1px silver;
+}
+
+section,footer {
+    background: #FFFFFF;
+    color: #464646
+}
+
+header {
+    background: #464646;
+}
+
+header h1 a {
+    text-decoration: none;
+}
+
+nav {
+    margin: 5px 15px 10px 15px;
+}
+
+h1 {
+    background: #464646;
+    margin: 0;
+    color: #d2d2d2;
+    padding-left: 10px;
+}
+
+h2,h3,h4,h5,h6 {
+    background: #dd3e3e;
+    margin: 0;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+
+h1,h2 {
+    padding: 10px;
+    font-weight: normal;
+}
+
+h2#workshop-name {
+    background: #464646;
+}
+
+h3,h4,h5,h6 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+h4,h5,h6 {
+    background: none;
+    color: #464646
+}
+
+section {
+    padding: 0 0 5px 0;
+}
+
+footer {
+    padding: 1px 0;
+}
+
+p {
+    margin: 20px;
+    text-indent: 40px;
+    text-align: justify;
+    text-align-last: end;
+}
+
+table {
+    margin: 20px;
+}
+
+table.contacts {
+    margin: 0px;
+}
+
+tr {
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+table tr td ul {
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+hr {
+    margin: 5px 20px;
+}
+
+#workshops-list {
+    list-style-type: none;
+}
+
+a.nav {
+    color: #d2d2d2;
+    font-weight: bold;
+}
+
+a {
+    color: #464646;
+    font-weight: bold;
+}
+
+#inside {
+    margin: 0 auto;
+    background: none;
+    width: 700px;
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 0;
+}
+
+figure.contacts {
+    float: none;
+    background: none;
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    margin: 5px;
+    font-size: 10pt;
+    width: 220px;
+    height: 32px;
+}
+
+figure.contacts img {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+}
+
+figure.contacts figcaption {
+    text-align: center;
+    padding-top: 8px;
+    color: #464646;
+}
+
+aside {
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px;
+    background: #464646;
+}
+
+aside img {
+    width: 32px;
+    height: 32px;
+}
+
+aside a {
+    color: #FFFFFF;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+figure {
+    float: left;
+}
+figcaption {
+    text-align: center;
+    color: #345A98;
+    font-weight: bold;
+}
+img {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+li figure {
+    background: #FFFFFF;
+    float: none;
+    display: inline-block;
+}
+li figure img {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+}
+li figure figcaption {
+    float: right;
+    padding-top: 27px;
+    text-align: left;
+}
+
+#footer-format {
+    margin: 5px;
+    font-weight: bold;
+}
+
+#footer-icons {
+    margin: 5px;
+    text-align: center;
+}
+
+#footer-icons {
+    text-decoration: none;
+}
+
+
+/* APPLICATION */
+input[type="submit"] {
+    display: block;
+    margin: 10px auto;
+    width: 80px;
+}
+
+p.application-help-paragraph {
+    font: 14pt sans-serif;
+}
+
+td.application-label {
+    font-weight: bold;
+}
+
+td.application-widget {
+    width: 60px;
+}
+
+td.application-help-text {
+    font-size: 10pt;
+    text-align: left;
+    font-style: italic;
+}
+
+.application-error {
+    font-size: 10pt;
+    text-align: left;
+    color: red;
+    font-weight: bold;
+}
+

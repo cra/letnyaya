@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Летняя Школа{% endblock title %}
+{% block header %}
+{% endblock header %}
+{% block content %}
+<p>Основная идея проекта&nbsp;&mdash; создание свободного образовательного пространства, в рамках которого студенты, профессионалы и школьники свободно общаются, обмениваются опытом и создают исследования, журналистские материалы в форматах газеты, радио, телевидения, фотографии.<p>
+
+<p><b>Летняя школа 2012</b>&nbsp;&mdash; это:</p>
+<ul>
+    <li>целый месяц в условиях, близких к полевым: с палатками, костром и походной романтикой;</li>
+    <li>увлекательная учёба, практика и десятки разнообразных факультативов;</li>
+    <li>общение с умными, творческими и нестандартными личностями.</li>
+</ul>
+
+{% spaceless %}
+<div id='inside'>
+<a href="http://twitter.com/shkolarr">
+    <figure class="contacts" id="twitter">
+        <img src="{{ STATIC_URL }}twitter-icon_gray.png" width=50 alt="twitter">
+        <figcaption>
+            @shkolarr
+        </figcaption>
+    </figure>
+</a>
+<a href="mailto:shkolarr@yandex.ru">
+    <figure class="contacts" id="mail">
+        <img src="{{ STATIC_URL }}mail-icon_gray.png" width=50 alt="mail">
+        <figcaption>
+            shkolarr@yandex.ru
+        </figcaption>
+    </figure>
+</a>
+<a href="http://vk.com/shkolarr">
+    <figure class="contacts" id="vk">
+        <img src="{{ STATIC_URL }}vkontakte-icon_gray.png" width=50 alt="vk">
+        <figcaption>
+            vk.com/shkolarr
+        </figcaption>
+    </figure>
+</a>
+</div>
+
+<h3>наши мастерские. Без эмблемммммок (привет, Люба!)</h3>
+<ul id="workshops-list">
+    {% for w in object_list %}
+    {% spaceless %}
+    <li>
+    {#<a href="{% url workshop_about w.slug %}"><figure><img src="{{ w.badge.url }}" alt="{{w.name}}"><figcaption>{{ w.name }}</figcaption></figure></a>#}
+    <a href="{% url workshop_about w.slug %}">{{ w.name }}</a>
+    </li>
+    {% endspaceless %}
+    {% endfor %}
+</ul>
+<h3>новости</h3>
+<p>На данном этапе слабонервным рекомендуется заготовить прочные стальные вилки для втыкания в глаз</p>
+{% endspaceless %}
+{% endblock content %}

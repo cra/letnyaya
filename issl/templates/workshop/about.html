@@ -1,0 +1,32 @@
+{% extends "workshop/base.html" %}
+{% load markup %}
+{% load socio %}
+
+{% block content %}
+
+{% block about %}
+<h2 id="workshop-name">{{ object.name }}</h2>
+<figure>
+  <img src="{{ object.badge.url }}" width="200" alt="Эмблема"/>
+</figure>
+{{ object.about|markdown }}
+
+{% if object.contacts %}
+{{ object.contacts|markdown }}
+{% endif %}
+
+{% if object.about_leader %}
+<h3>Руководство</h3>
+{{ object.about_leader|markdown }}
+{% endif %}
+
+{% endblock about %}
+
+{% endblock content %}
+
+{% block contacts %}
+<aside>
+{{ object|social }}
+</aside>
+{% endblock contacts %}
+

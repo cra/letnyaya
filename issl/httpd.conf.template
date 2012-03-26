@@ -1,0 +1,29 @@
+WSGISocketPrefix run/wsgi
+<VirtualHost *:80>
+	ServerAdmin __ADMIN_EMAIL__
+	ServerName __SERVER_NAME__
+        WSGIDaemonProcess __SERVER_NAME__ user=__USER__ group=__USER__ threads=10 maximum-requests=10000
+        WSGIProcessGroup __SERVER_NAME__
+        TimeOut 600
+
+	WSGIScriptAlias / __ROOT__/issl/issl.wsgi
+	Alias /media/admin/ __ROOT__/lib/django/contrib/admin/media/
+	<Directory __ROOT__/lib/django/contrib/admin/media>
+		  Order allow,deny
+		  Options Indexes
+		  Allow from all
+		  IndexOptions FancyIndexing
+	</Directory>
+	Alias /media/ __ROOT__/issl/media/
+	<Directory __ROOT__/issl/media>
+		  Order allow,deny
+		  Options Indexes
+		  Allow from all
+		  IndexOptions FancyIndexing
+	</Directory>
+    <Directory __ROOT__/issl/media/secure-files>
+        Deny from all
+        AllowOverride None
+    </Directory>
+
+</VirtualHost>

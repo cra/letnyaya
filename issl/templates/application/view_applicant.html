@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load markup %}
+{% load socio %}
+
+{% block title %}Анкета. {{ applicant.name }}{% endblock title %}
+
+{% block content %}
+
+<h1>Содержимое заполненной анкеты</h1>
+{% include 'application/_applicant_info.html' %}
+{% if applicant.is_approved %}
+<h2>Данные подверждены</h2>
+{% else %}
+<h1>Данные не подверждены</h1>
+<form action="{% url approve_applicant applicant.view_link  %}" method="post">
+{% csrf_token %}
+<input type="submit" style='width:120px' value="Подтвердить"/>
+</form>
+{% endif %}
+{% endblock content %}
+

@@ -1,0 +1,39 @@
+{% load workshops_info %}
+<h2>Персональная информация</h2>
+<ol>
+    <li><strong>Полное имя желающего</strong>: {{ applicant.name }}</li>
+    <li><strong>Откуда</strong>: {{ applicant.city }}</li>
+    <li><strong>e-mail</strong>: {{ applicant.email }}</li>
+    <li><strong>телефон</strong>: {{ applicant.telephone }}</li>
+    <li><strong>возраст</strong>: {{ applicant.age }}</li>
+    <li><strong>фото</strong>: <br/><img src="{{ applicant.photo.url }}" width="300" alt="Фотка"/></li>
+</ol>
+<h2>Мастерские</h2>
+{{ applicant|workshops|safe }}
+<h2>Активность в обычной жизни</h2>
+<ol>
+    <li><strong>Где работает</strong>: 
+    <pre>{{ applicant.workplace }}</pre></li>
+    <li><strong>Специальность</strong>:
+    <pre>{{ applicant.job }}</pre></li>
+    <li><strong>Что хочет делать на ЛШ</strong>: 
+    <pre>{{ applicant.onboard }}</pre></li>
+</ol>
+<h2>Активность на ЛШ</h2>
+<ol>
+    <li><strong>Был на ЛШ раньше</strong>: 
+    <pre>{{ applicant.been_before }}</pre></li>
+    <li><strong>Примерный срок</strong>: 
+    <pre>{{ applicant.how_long }}</pre></li>
+    <li><strong>Что хочет рассказать</strong>: 
+    <pre>{{ applicant.courses }}</pre></li>
+    <li><strong>Идеи досуга</strong>: 
+    <pre>{{ applicant.dosug }}</pre></li>
+</ol>
+<h2>Прочее</h2>
+<ol>
+    <li><strong>Про деньги</strong>:
+    <pre>{{ applicant.money }}</pre></li>
+    <li><strong>Вопросы</strong>: 
+    <pre>{{ applicant.questions }}</pre></li>
+</ol>

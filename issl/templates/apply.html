@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Подать заявку{% endblock title %}
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<h2>Анкета</h2>
+
+     <p>Добрый день! Раз вы оказались на этой страничке, значит хотите поехать на Летнюю школу 2012. Для того, чтобы стать участником этого проекта, нужно заполнить анкету. После её заполнения она будет отправлена в мастерскую, которую вы выбрали как приоритетную.</p>
+   <p>Представители этой мастерской предложат вам пройти собеседование, заполнить еще одну анкету, прислать образцы своих работ или что-то еще. А может, и ничего не предложат&nbsp;&mdash; просто занесут вас в список участников. Если с приоритетной мастерской у вас что-то не получилось, то ваша анкета будет отослана на мастерскую, которую вы выбрали как вторую по приоритетности.</p>
+   <h3>Несколько предупреждений: </h3>
+   <ol>
+       <li>Анкету заполняют все, вне зависимости от того, в который раз человек едет на школу (в первый или в десятый)</li>
+       <li>Эта анкета не является анонимной. Основная часть представленных вами данных будет доступна членам оргкомитета летней школы. Предупреждаем на всякий случай, вряд ли вы поведаете в этой анкете что-то уж совсем интимное.</li>
+       <li>Если вы в чем-то не уверены (например, в сроках вашей поездки), все равно напишите. Мы прекрасно понимаем, что ваши планы могут измениться.</li>
+       <li>Если для ответа нужно посоветоваться с организаторами&nbsp;&mdash; посоветуйтесь (например, в группе в Контакте).</li>
+       <li>Если вы категорически не желаете заполнять анкету (например, это противоречит вашим религиозным принципам), но всё равно очень хотите поехать на Летнюю школу 2012, то свяжитесь с директором Школы <a href="mailto:gri-tarasevich@yandex.ru">gri-tarasevich@yandex.ru</a></li>
+   </ol>
+<h2>Поехали!</h2>
+<form action="{% url apply %}" enctype="multipart/form-data" method="post">
+    {% if personal_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+    {% csrf_token %}
+<table>
+    {% for f in personal_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}</td>
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+<h3>Мастерские</h3>
+<p>Пожалуйста, выберите две мастерские из списка ниже, одна основная &mdash; та, которая больше всего приглянулась, и запасная &mdash; если не получится попасть на ту, что вы выбрали.</p>
+    {% if applicant_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+<table>
+    {% for f in applicant_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}</td>
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<h3>Дополнительная информация</h3>
+    {% if additional_info_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+<table>
+    {% for f in additional_info_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}</td><td></td>
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<h3>Сроки и активность</h3>
+
+<p>Традиционно студенты и школьники приезжают на срок, кратный учебным
+циклам (5&nbsp;учебно-рабочих дней + 2&nbsp;отчетно-выходных). Исключения готовы
+обсуждать. Несовершеннолетние едут либо вместе со всеми (в день начала школы
+и в день окончания школы), либо их сопровождают родители, либо родители
+пишут доверенность.</p>
+<table>
+    {% if school_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+    {% for f in school_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}</td>
+        <td></td><!--lol-->
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<h3>Про деньги</h3>
+
+<p>Как вы уже поняли, Летняя школа – это абсолютно независимый проект, который
+существует практически (или совсем) без спонсоров. Все, включая преподавателей,
+администрацию и даже директора, платят взносы. На эти деньги мы покупаем еду,
+арендуем здание, строим навесы, формируем аптечку, оплачиваем врача, закупаем
+дрова и т.д. (статей расходов – несколько десятков).</p>
+    {% if money_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+<table>
+    {% for f in money_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}</td>
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<p>Учтите, это только пожелания. Каков будет взнос на самом деле, мы пока не
+знаем, но делаем всё возможное, чтобы он был поменьше. У нас тоже кошельки не
+очень толстые.</p>
+
+
+
+<h3>Ваши вопросы</h3>
+<table>
+    {% if question_form.errors %}
+        <p class="application-error">В этой части есть ошибки</p>
+    {% endif %}
+    {% for f in questions_form %}
+    <tr>
+        <td class="application-label">{{ f.label }}</td>
+        <!--todo: errors?-->
+        <td class="application-widget">{{ f }}{{ f.errors }}</td>
+        {% if f.errors %}
+            <td class="application-error">{{ f.errors }}</td>
+        {% endif %}
+        <td class="application-help-text">{{ f.help_text }}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+<h3>Всё!</h3>
+
+<p>Проверьте на всякий случай, что всё, что вы заполнили позволяет связаться с вами. При возникновении технических сложностей в процессе заполнения анкеты, напишите письмо на <a href="mailto:letnyayashkola@tickets.assembla.com">letnyayashkola@tickets.assembla.com</a></p>
+
+<input type="submit" value="Отправить"/>
+
+</form>
+{% endblock content %}
